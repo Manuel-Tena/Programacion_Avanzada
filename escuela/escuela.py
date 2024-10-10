@@ -2,6 +2,8 @@ from typing import List
 from estudiantes.estudiante import Estudiante
 from grupos.grupo import Grupo
 from maestros.maestro import Maestro
+from coordinador.coordinador import Coordinador
+from usuario.usuario import Usuario
 from materias.materia import Materia
 from carrera.carrera import Carrera
 from semestre.semestre import Semestre
@@ -9,6 +11,7 @@ from datetime import datetime
 from random import randint
 
 class Escuela:
+    lista_usuarios: List[Usuario] = []
     lista_estudiantes: List[Estudiante] = []
     lista_maestros: List[Maestro] = []
     lista_grupos: List[Grupo] = []
@@ -16,8 +19,13 @@ class Escuela:
     lista_carreras: List[Carrera] = []
     lista_semestres: List[Semestre] = []
 
+    def __init__(self):
+        coordinador = Coordinador(numero_control="12345", nombre="Alberto", apellido="Martinez", rfc="MARTINEZ123", sueldo= 10000, anios_antiguedad=10, contrasenia="123*456*")
+        self.lista_usuarios.append(coordinador)
+
     ###ESTUDIANTE###
     def registrar_estudiante(self, estudiante: Estudiante):
+        self.lista_usuarios.append(estudiante)
         self.lista_estudiantes.append(estudiante)
         print("\nSe registro con exito al estudiante con numero de control: ", estudiante.numero_control)
 
@@ -45,6 +53,7 @@ class Escuela:
 
     ###MAESTRO###
     def registrar_maestro(self, maestro: Maestro):
+        self.lista_usuarios.append(maestro)
         self.lista_maestros.append(maestro)
 
     def generar_numero_control_maestros(self, maestro: Maestro):
@@ -54,8 +63,8 @@ class Escuela:
         primeras_2_letras_nombre = maestro.nombre[:2].upper()
         ultimas_2_letras_rfc = maestro.rfc[-2:].upper()
         longitud_mas_uno = len(self.lista_maestros)+1
-        numero_control_maestro = f"M{ano}{dia}{aleatorio}{primeras_2_letras_nombre}{ultimas_2_letras_rfc}{longitud_mas_uno}"
-        return numero_control_maestro
+        numero_control = f"M{ano}{dia}{aleatorio}{primeras_2_letras_nombre}{ultimas_2_letras_rfc}{longitud_mas_uno}"
+        return numero_control
     
     def listar_maestros(self):
         print("*************Maestros*************")
@@ -123,3 +132,11 @@ class Escuela:
         print("*************Grupos*************")
         for grupo in self.lista_grupos:
             print(grupo.mostrar_informacion())
+
+    ###Usuarios###
+    def validar_inicio_sesion(self, numero_control: str, contrasenia: str):
+        for usuario in self.lista_usuarios:
+            if usuario.numero_control == numero_control:
+                if usuario.contrasenia == contrasenia:
+                    return usuario
+        return None
