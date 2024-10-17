@@ -1,19 +1,22 @@
 from typing import List
 from random import randint
 from datetime import datetime
+from maestros.maestro import Maestro
 
 class Materia:
     nombre: str
     descripcion:str
     id_semestre: int
     creditos: int
+    maestro: Maestro
 
-    def __init__(self, nombre: str, descripcion:str, id_semestre: int, creditos: int):
+    def __init__(self, nombre: str, descripcion:str, id_semestre: int, creditos: int, maestro: Maestro):
         self.nombre = nombre
         self.descripcion = descripcion
         self.id_semestre = id_semestre
         self.creditos = creditos
         self.numero_control = self.generar_numero_control()
+        self.maestro = maestro
 
     def generar_numero_control(self):
         Ultimas_2_letras_nombre = self.nombre[-2:].upper()

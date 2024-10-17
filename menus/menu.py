@@ -56,7 +56,7 @@ class Menu:
                 print("\nSeleccionaste mostrar un horario \n")
 
             elif opcion == 2:
-                self.escuela.listar_grupos()
+                self.escuela.ver_grupos_asignados_a_estudiante()
 
             elif opcion == 3:
                 self.escuela.listar_materias()
@@ -177,8 +177,9 @@ class Menu:
                 descripcion = input("Ingresa la descripcion de la materia: ")
                 semestre = input("Ingresa el id del semestre al que corresponde la materia: ")
                 credito = int(input("Ingresa los creditos que otorga la materia: "))
-                
-                materia = Materia(nombre=nombre, descripcion=descripcion, id_semestre=semestre, creditos=credito)      
+                id_maestro = input("Ingresa el ID del maestro asignado a esta materia: ")
+                maestro = self.escuela.buscar_maestro_por_numero_control(numero_control_maestro=id_maestro)
+                materia = Materia(nombre=nombre, descripcion=descripcion, id_semestre=semestre, creditos=credito, maestro=maestro)      
                 print("El id de la materia es: ", materia.numero_control)
                 self.escuela.registrar_materia(materia=materia)
 

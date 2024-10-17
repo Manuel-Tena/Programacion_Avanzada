@@ -133,10 +133,49 @@ class Escuela:
         for grupo in self.lista_grupos:
             print(grupo.mostrar_informacion())
 
-    ###Usuarios###
+    def registrar_estudiante_en_grupo(self, numero_control_estudiante: str, id_grupo: str):
+        estudiante = self.buscar_estudiante_por_numero_control(numero_control_estudiante=numero_control_estudiante)
+        if estudiante is None:
+            print("No se encontro ningun estudiante con el numero de control ingresado")
+            return
+        grupo = self.buscar_grupo_por_id(id_grupo=id_grupo)
+        if grupo is None:
+            print("No se encontro ningun grupo con el ID ingresado")
+            return
+        grupo.registrar_estudiante(estudiante=estudiante)
+        print("Estudiante asignado al grupo correctamente")
+
+    def ver_grupos_asignados_a_estudiante(self, numero_control_estudiante: str):
+        estudiante = self.buscar_estudiante_por_numero_control(numero_control_estudiante=numero_control_estudiante)
+        if estudiante is None:
+            print("No se encontro ningun estudiante con el numero de control ingresado")
+            return
+        for grupo in self.lista_grupos:
+            grupo.mostrar_info_grupo_para_estudiante()
+
+    ### Validar Usuarios ###
     def validar_inicio_sesion(self, numero_control: str, contrasenia: str):
         for usuario in self.lista_usuarios:
             if usuario.numero_control == numero_control:
                 if usuario.contrasenia == contrasenia:
                     return usuario
         return None
+    
+    def buscar_estudiante_por_numero_control(self, numero_control_estudiante: str):
+        for estudiante in self.lista_estudiantes:
+            if estudiante.numero_control == numero_control_estudiante:
+                return estudiante
+        return None
+    
+    def buscar_maestro_por_numero_control(self, numero_control_maestro: str):
+        for maestro in self.lista_maestros:
+            if maestro.numero_control == numero_control_maestro:
+                return maestro
+        return None
+    
+    def buscar_grupo_por_id(self, id_grupo: str):
+        for grupo in self.lista_grupos:
+            if grupo.id == id_grupo:
+                return grupo
+        return None
+    
