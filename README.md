@@ -20,7 +20,7 @@
 - Además, los empleados podrán filtrar libros por algún dato para mostrar únicamente los libros de una editorial específica.
 
 ***Estructura de la Base de Datos***
-Para almacenar la información, usarás una base de datos. La base de datos tendrá al menos dos tablas principales:
+- Para almacenar la información, usarás una base de datos. La base de datos tendrá al menos dos tablas principales:
 1. Tabla de Libros
 - id (***INT***, ***PRIMARY KEY***, ***AUTOINCREMENT***)
 - titulo (***TEXT***)
