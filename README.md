@@ -2,10 +2,10 @@
 
 # Proyecto Final #
 
-*** Descripción del Proyecto ***
-En este proyecto, crearás una aplicación de escritorio en Python que permita gestionar empleados y libros utilizando una base de datos. La aplicación constará de un sistema de login que permitirá el acceso a dos tipos de usuarios: Administrador y Empleado. Dependiendo del tipo de usuario, tendrán diferentes permisos y funcionalidades disponibles.
+***Descripción del Proyecto***
+- En este proyecto, crearás una aplicación de escritorio en Python que permita gestionar empleados y libros utilizando una base de datos. La aplicación constará de un sistema de login que permitirá el acceso a dos tipos de usuarios: Administrador y Empleado. Dependiendo del tipo de usuario, tendrán diferentes permisos y funcionalidades disponibles.
 
-*** Requisitos Funcionales ***
+***Requisitos Funcionales***
 1. Login de Usuarios
 - La aplicación debe tener una pantalla de login donde el usuario debe ingresar su nombre de usuario y contraseña.
 - Existen dos tipos de usuarios:
@@ -19,7 +19,7 @@ En este proyecto, crearás una aplicación de escritorio en Python que permita g
 - Cada libro debe tener información como: ID, título, autor, editorial, año de publicación, y precio.
 - Además, los empleados podrán filtrar libros por algún dato para mostrar únicamente los libros de una editorial específica.
 
-*** Estructura de la Base de Datos ***
+***Estructura de la Base de Datos***
 Para almacenar la información, usarás una base de datos. La base de datos tendrá al menos dos tablas principales:
 1. Tabla de Libros
 - id (***INT***, ***PRIMARY KEY***, ***AUTOINCREMENT***)
