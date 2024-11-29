@@ -77,6 +77,10 @@ def gestion_de_empleados():
         useradd = user.get()
         passwordAdd = password.get()
         rolAdd = role.get()
+        
+        if rolAdd == "":
+            messagebox.showerror("Error", "El campo 'Rol' no puede estar vacío. Seleccione un rol para continuar.")
+            return
 
         mysqlC = mysql.connector.connect(host="localhost", user="root", password="", database="proyecto_final")
         micursor = mysqlC.cursor()
