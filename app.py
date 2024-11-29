@@ -283,6 +283,7 @@ def gestion_de_libros():
     def reiniciar():
         actualizar()
         messagebox.showinfo("Información", "El filtro fue eliminado")
+        filtrareditorial.delete(0, END)
     
     def edit():
         idAdd = identificador.get()
@@ -343,11 +344,11 @@ def gestion_de_libros():
         seleccion = listbox.set(renglon)
         print(seleccion)
         identificador.insert(0, seleccion["Id"])
-        name.insert(0, seleccion["Titulo"])
-        lastname.insert(0, seleccion["Autor"])
-        user.insert(0, seleccion["Editorial"])
-        password.insert(0, seleccion["Año de publicación"])
-        role.insert(0, seleccion["Precio"])
+        title.insert(0, seleccion["Titulo"])
+        autor.insert(0, seleccion["Autor"])
+        editorial.insert(0, seleccion["Editorial"])
+        releasedate.insert(0, seleccion["Año de Publicación"])
+        price.insert(0, seleccion["Precio"])
 
     def filtrar_por_editorial():
         filtrar_por_editorial = filtrareditorial.get()
